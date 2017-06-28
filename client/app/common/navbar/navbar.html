@@ -1,0 +1,33 @@
+<!-- <div class="divNavbar"> -->
+
+<!-- TOOLBAR / HEADER -->
+<md-toolbar layout="row" class="md-toolbar-tools toolbarClass bgcolor">
+
+    <div flex   hide-gt-sm style="text-align: left;">
+     <md-menu>
+       <md-button  class="md-icon-button"
+        ng-click="$ctrl.toggleList()">
+         <md-icon md-font-set="material-icons">menu</md-icon>
+       </md-button>
+       <md-menu-content></md-menu-content>
+     </md-menu>
+    </div>
+
+    <div layout="row" class="divContentClass">
+      <div flex="20" show-gt-sm hide>
+        <md-button class="square"  ng-click="$ctrl.toggleLeft()">
+          <img src="../app/public/images/home/logo.png" class="logoClass"  ui-sref="home" />
+        </md-button>
+      </div>
+      <div flex="80"  style="text-align:right;margin: auto auto;" show-gt-sm hide>
+        <md-button class="square" ng-click="$ctrl.changTitle(item.content)"  ng-repeat="item in $ctrl.menus | orderBy:'id' | limitTo: 5" ui-sref="{{item.url}}">
+          {{item.content}}
+        </md-button>
+      </div>
+      <div flex  hide-gt-sm style="text-align:center;">
+        <p style="font-size: 16px;">
+          {{$ctrl.title}}
+        </p>
+      </div>
+</div>
+</md-toolbar>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ConvNetJS CIFAR-10 demo</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <script src="jquery-1.8.3.min.js"></script>
+  <script src="./vis.js"></script>
+  <script src="./util.js"></script>
+  <script src="./convnet.js"></script>
+  <link rel="stylesheet" href="./cifar10.css">
+  <link rel="stylesheet" href="./mobile.css">
+  <script src="./cifar10/cifar10_labels.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+</head>
+
+<body style="overflow-y: hidden;">
+  <div id="wrap">
+
+    <div class="STdes" style="border: 1px solid #eee;">
+          <p class="STfont">AI物体识别 | 项目简介</p>
+      </div>
+      <div style="padding: 15px;">
+          <p class="pMar">当你看到页面数字有变化时，正是本项目在你的浏览器上使用了神经网络的算法对我们的人工智能模型进行训练和预测。</p>
+          <p class="pMar">本项目背后用到的数据集是由CIFAR-10提供，感谢他们对数据集的提供。</p>
+          <p class="pMar">利用我们人工智能模型，对CIFAR-10数据集中的物体预测识别，准确率达到了90%，而人类通过人眼观看识别的准确率是94%。</p>
+      </div>
+
+
+    <div class="divsec">
+          <h3 class="pfont">训练状态</h3>
+      <div class="secpart">
+        <div>
+          <!-- <input id="buttontp" type="submit" value="pause" onclick="toggle_pause();"/> -->
+          <img id="imgPlay" src="../images/svg/play.svg" onclick="toggle_pause();" class="button-cursor" style="width: 45px; height: 45px; cursor: pointer;" />
+        </div>
+        <h3 class="pfont">参数看板</h3>
+        <div id="trainstats"></div>
+
+        <div id="controls">
+          <h3 class="pfont">参数调节栏</h3>
+          <table>
+            <tr>
+              <td>Learning rate: </td>
+              <td><input name="lri" type="text" maxlength="20" id="lr_input" /></td>
+              <td><input id="buttonlr" type="submit" value="change" onclick="change_lr();" class="button-cursor"/></td>
+            </tr>
+            <tr>
+              <td>Momentum:</td>
+              <td><input name="momi" type="text" maxlength="20" id="momentum_input" /></td>
+              <td><input id="buttonmom" type="submit" value="change" onclick="change_momentum();" class="button-cursor"/></td>
+            </tr>
+            <tr>
+              <td>Batch size:</td>
+              <td><input name="bsi" type="text" maxlength="20" id="batch_size_input" /></td>
+              <td><input id="buttonbs" type="submit" value="change" onclick="change_batch_size();" class="button-cursor" /></td>
+            </tr>
+            <tr>
+              <td>Weight decay:</td>
+              <td><input name="wdi" type="text" maxlength="20" id="decay_input" /></td>
+              <td><input id="buttonwd" type="submit" value="change" onclick="change_decay();" class="button-cursor"/></td>
+            </tr>
+          </table>
+        </div>
+        <div style="display: none;">
+          <input id="buttondj" type="submit" value="save network snapshot as JSON" onclick="dump_json();" /><br />
+          <input id="buttonlfj" type="submit" value="init network from JSON snapshot" onclick="load_from_json();" /><br />
+            <textarea id="dumpjson" style="width: 80%;"></textarea>
+          <br>
+          <input id="buttonpre" type="submit" value="load a pretrained network (achieves ~80% accuracy)" onclick="load_pretrained();" style="height: 30px; width: 400px;" /><br />
+        </div>
+
+      </div>
+      <div class="secpart" style="padding-top: 20px;">
+          <h3 class="pfont" style="maring-bottom: 0 0;">AI学习曲线</h3>
+          <canvas id="lossgraph">
+          </canvas>
+        <div style="display:none;">
+          <input id="buttoncg" type="submit" value="clear graph" onclick="clear_graph();" />
+        </div>
+
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+
+
+    <div class="divsec">
+      <h3 class="pfont">AI神经网络训练器</h3>
+      <textarea id="newnet" class="div-border newnet-class" ></textarea><br />
+      <div style="display: none;">
+        <input id="buttonnn" type="submit" value="change network" onclick="change_net();" style="width:200px;height:30px;" />
+      </div>
+    </div>
+
+    <div class="divsec">
+      <h3 class="pfont">AI学习过程展示</h3>
+      <div id="visnet"></div>
+    </div>
+
+    <div class="divsec">
+      <h3>AI预测结果</h3>
+      <div id="testset_acc"></div>
+      <div id="testset_vis"></div>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    window.onload = function () {
+      var $self = window.parent.document.getElementById('cifar10-demo');
+      var lastHeight = document.body.scrollHeight;
+      $self.height = document.body.scrollHeight;
+      setInterval(function () {
+        if (lastHeight === document.body.scrollHeight) {
+          return;
+        }
+        lastHeight = document.body.scrollHeight;
+        $self.height = lastHeight;
+      }, 1000);
+    }
+  </script>
+</body>
+
+</html>

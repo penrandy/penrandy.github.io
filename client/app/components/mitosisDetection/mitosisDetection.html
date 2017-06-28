@@ -1,0 +1,102 @@
+<div layout="row" class="bgc">
+
+<div class="divM0">
+<md-content flex id="content" layout="column" class="STbody">
+    <div class="STdes">
+          <p class="STfont">AI肿瘤细胞检测 | 项目简介</p>
+    </div>
+    <div>
+          <p class="pMar">乳腺癌细胞有丝分裂的识别在数字化组织病理学中是一个非常有挑战性的难题。由于有丝分裂的细胞体积小、形态变化多样，因此在进行图片识别时他们很容易被其他的组织或者外界颗粒所干扰。</p>
+          <p class="pMar">有丝分裂的计数在癌症分级中是一个很重要的参数，他是评估癌症严重程度的一个重要参数。</p>
+          <p class="pMar">本项目首先利用深度学习中的卷积神经网络对乳腺癌细胞进行分类，挑出真阴性细胞（癌细胞），然后利用深度卷积神经网络将不确定的阴性细胞和真阴性细胞对比学习其中的差别，最后分成三类——真阳性细胞、假阳性细胞、假阴性细胞。</p>
+    </div>
+    <div class="STdes">
+          <p class="STfont">图片导入</p>
+    </div>
+     <div class="STdes" layout="row"  style="padding:10px 0px;">
+          <div flex >
+            <p class="pMar">images01.jpg</p>
+            <p class="pMar">images02.jpg</p>
+          </div>
+          <div flex layout="column" style="">
+            <div>
+              <md-button class="md-raised inBtn"  flex="50">导入</md-button>
+            </div>
+            <div>
+              <md-button class="md-raised inBtn"  flex="50">导入</md-button>
+            </div>
+          </div>
+    </div>
+    <div layout-xs="column" layout="row"  style="padding:10px 0px;">
+          <img src="../app/public/images/mitosisDetection/MD001.png" style="margin:10px auto" alt="" >
+          <img src="../app/public/images/mitosisDetection/MD002.png" style="margin:10px auto" alt="" >
+    </div>
+    <div layout-xs="column" layout="row">
+          <img src="../app/public/images/mitosisDetection/MD003.png" style="margin:10px auto" alt="" >
+          <img src="../app/public/images/mitosisDetection/MD003.png" style="margin:10px auto" alt="" >
+    </div>
+    <div layout="row" style="margin-top: 10px">
+          <div flex="45"></div>
+          <md-button class="md-raised inBtn" style="margin:20px auto" flex="10">开始检测</md-button>
+          <div flex="45"></div>
+    </div>
+    <div class="STdes" >
+          <p class="STfont">AI 检测结果</p>
+    </div>
+
+    <div layout="row" style="padding:10px 0px;">
+        <div style="text-align: center;padding-left: 30px;">
+          <div  ng-repeat="img in $ctrl.splitImgs1" style="margin: 10px auto;float: left;margin: 10px 25px;">
+            <img  src="{{img}}" style="width: 95px;height: 95px;" >
+          </div>
+        </div>
+    </div>
+
+    <!-- <div layout="row"   style="padding:10px 0px;">
+      <div style="text-align: center;">
+        <div   ng-repeat="img in $ctrl.splitImgs2" style="text-align: center;">
+          <img src="{{img}}" style="width: 95px;height: 95px;margin:10px auto">
+        </div>
+      </div>
+
+    </div> -->
+    <div layout="row" style="margin-top: 10px">
+          <div flex="45"></div>
+          <md-button class="md-raised inBtn" style="margin:20px auto" flex="10">生成报告</md-button>
+          <div flex="45"></div>
+    </div>
+    <div class="STdes" layout="row" layout-xs="column">
+          <div style="margin:0 auto:padding:15px;">
+               <img src="{{$ctrl.imgDetectionResultUrl}}" style="width: 300px;height: 300px;margin:20px 0" class="imgResponsive">
+          </div>
+          <div flex="20" flex-sm="10"></div>
+          <div layout="column" style="margin:0 auto;">
+              <div flex="30"></div>
+              <p style="font-size: 14px;">绿色圈——正常细胞</p>
+              <p style="font-size: 14px;">蓝色圈——有丝分裂癌细胞</p>
+              <p style="font-size: 14px;">红色圈——成熟癌细胞</p>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</md-content>
+<p class="homeP">北京商高科技有限公司   2017  京ICP备17008605号-1</p>
+</div>
+</div>
