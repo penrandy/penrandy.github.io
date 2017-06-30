@@ -1,4 +1,4 @@
-# 基于angularJS的Github Pages部署
+# 基于 AngularJS 的 Github Pages 部署
 
 ```
 project: 基于 AngularJS 的 Github Pages 部署
